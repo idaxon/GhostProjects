@@ -151,12 +151,20 @@ export default function GhostBrowserPage() {
               )}
               {downloadState === "unlocked" && (
                 <div className="download-options-group">
-                  <button className="term-btn unlock-btn pulse" onClick={handleDownloadClick}>
+                  <a
+                    href="https://github.com/idaxon/ghost-browser/releases/download/v1.0.0/ghost-browser-1.0.0.dmg"
+                    className="term-btn unlock-btn pulse"
+                    style={{ display: "inline-flex", alignItems: "center", justifyContent: "center" }}
+                  >
                     ↓ MAC DOWNLOAD
-                  </button>
-                  <button className="term-btn unlock-btn pulse" onClick={handleDownloadClick}>
+                  </a>
+                  <a
+                    href="https://github.com/idaxon/ghost-browser/releases/download/v1.0.0/ghost-browser-1.0.0-setup.exe"
+                    className="term-btn unlock-btn pulse"
+                    style={{ display: "inline-flex", alignItems: "center", justifyContent: "center" }}
+                  >
                     ↓ WINDOWS DOWNLOAD
-                  </button>
+                  </a>
                   <button className="term-btn unlock-btn pulse" onClick={handleDownloadClick}>
                     ↓ LINUX DOWNLOAD
                   </button>
