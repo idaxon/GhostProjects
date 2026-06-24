@@ -80,3 +80,58 @@
   background: #f0f0f0;
   color: #444;
 }
+
+.emptyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  border: 1px dashed var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(8px);
+  max-width: 600px;
+  margin: 60px auto;
+  text-align: center;
+}
+
+.emptyIcon {
+  color: var(--color-accent);
+  margin-bottom: 20px;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 8px var(--color-accent-glow));
+}
+
+.emptyText {
+  color: var(--color-text-primary);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 440px;
+}
+
+.emptyTerminalLine {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--color-border);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  width: 100%;
+  max-width: 380px;
+  text-align: left;
+}
+
+.emptyCommand {
+  color: #fff;
+  opacity: 0.65;
+}
+
+.emptyResponse {
+  color: var(--color-accent);
+  opacity: 0.85;
+}

@@ -55,12 +55,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${instrumentSans.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${instrumentSans.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <body>
         <div className="scanline"></div>
         <Cursor />
         <Navbar />
-        {children}
+        <div className="main-content-wrapper">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>

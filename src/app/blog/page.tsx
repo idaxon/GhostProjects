@@ -12,7 +12,20 @@ export default async function BlogPage() {
     <main className={styles.container}>
       <h1 className={styles.heading}>Blog</h1>
       {posts.length === 0 && (
-        <p className={styles.empty}>No posts yet. Add one in your Sanity Studio.</p>
+        <div className={styles.emptyContainer}>
+          <div className={styles.emptyIcon}>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+          <p className={styles.emptyText}>
+            No blogs yet. Our writers are still pretending to be productive.
+          </p>
+          <div className={styles.emptyTerminalLine}>
+            <span className={styles.emptyCommand}>$ cat productivity.log</span>
+            <span className={styles.emptyResponse}>status: inactive [waiting for inspiration]</span>
+          </div>
+        </div>
       )}
       <div className={styles.grid}>
         {posts.map((post) => (

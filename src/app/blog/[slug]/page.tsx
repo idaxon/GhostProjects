@@ -11,6 +11,21 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }))
 }
 
+const components = {
+  types: {
+    image: ({ value }: any) => {
+      if (!value?.asset?._ref) return null
+      return (
+        <img
+          src={urlFor(value).width(800).fit('max').auto('format').url()}
+          alt={value.alt || 'Blog image'}
+          loading="lazy"
+        />
+      )
+    },
+  },
+}
+
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const post = await getPostBySlug(slug)
@@ -37,7 +52,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </div>
       )}
       <article className={styles.body}>
-        <PortableText value={post.body} />
+        <PortableText value={post.body} components={components} />
       </article>
     </main>
   )

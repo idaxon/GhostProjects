@@ -89,7 +89,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+
+.main-content-wrapper {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 
 a {
   color: inherit;
@@ -3146,3 +3156,177 @@ td.no {
     -webkit-tap-highlight-color: transparent;
   }
 }
+
+/* ── Cursor Settings Control Bar ── */
+.cursor-settings-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99990;
+  font-family: var(--font-mono);
+}
+
+.cursor-settings-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease-out-expo);
+  cursor: none !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+}
+
+.cursor-settings-btn:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 12px var(--color-accent-glow);
+  transform: scale(1.05);
+}
+
+.cursor-settings-btn.active {
+  color: var(--color-text-primary);
+  border-color: var(--color-accent);
+  background: var(--color-surface-elevated);
+  transform: rotate(45deg);
+}
+
+.cursor-settings-panel {
+  position: absolute;
+  bottom: 54px;
+  right: 0;
+  width: 220px;
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: cursorPanelFadeIn 0.25s var(--ease-out-expo) forwards;
+  pointer-events: auto;
+}
+
+@keyframes cursorPanelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cursor-settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 6px;
+}
+
+.cursor-settings-close {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  cursor: none !important;
+  line-height: 1;
+  padding: 0;
+}
+
+.cursor-settings-close:hover {
+  color: var(--color-accent);
+}
+
+.cursor-settings-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cursor-settings-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+}
+
+.cursor-settings-val {
+  color: var(--color-accent);
+  font-weight: 700;
+  text-shadow: 0 0 8px var(--color-accent-glow);
+}
+
+/* Custom styled range slider */
+.cursor-settings-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: var(--color-border-subtle);
+  border-radius: var(--radius-full);
+  outline: none;
+  cursor: none !important;
+  margin: 8px 0;
+}
+
+.cursor-settings-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 1px solid var(--color-text-primary);
+  box-shadow: 0 0 8px var(--color-accent-glow);
+  cursor: none !important;
+  transition: transform 0.1s;
+}
+
+.cursor-settings-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.cursor-settings-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 1px solid var(--color-text-primary);
+  box-shadow: 0 0 8px var(--color-accent-glow);
+  cursor: none !important;
+  transition: transform 0.1s;
+}
+
+.cursor-settings-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+
+.cursor-settings-subtext {
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .cursor-settings-container {
+    display: none !important;
+  }
+}
+
