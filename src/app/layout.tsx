@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import Cursor from "./components/Cursor";
+import Footer from "./components/Footer"; 
 
 const instrumentSans = Instrument_Sans({
   variable: "--font-space-grotesk",
@@ -56,8 +58,10 @@ export default function RootLayout({
     <html lang="en" className={`${instrumentSans.variable} ${jetbrainsMono.variable}`}>
       <body>
         <div className="scanline"></div>
+        <Cursor />
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -1,7 +1,14 @@
 /* ═══════════════════════════════════════
    DESIGN TOKENS
    ═══════════════════════════════════════ */
+*, *::before, *::after {
+  cursor: none !important;
+}
 
+/* Also explicitly target nav elements */
+nav, nav a, nav * {
+  cursor: none !important;
+}
 :root {
   /* ── Colors ── */
   --color-bg: #000000;
@@ -138,30 +145,9 @@ body::before {
    CURSOR
    ═══════════════════════════════════════ */
 
-#cursor {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: var(--color-accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: var(--z-cursor);
-  transform: translate(-50%, -50%);
-  transition: width .2s, height .2s, background .2s;
-  mix-blend-mode: normal;
-}
 
-#cursor-ring {
-  position: fixed;
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(240, 237, 232, 0.35);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: var(--z-cursor-ring);
-  transform: translate(-50%, -50%);
-  transition: width .3s, height .3s, border-color .3s;
-}
+
+
 
 body:has(a:hover) #cursor,
 body:has(button:hover) #cursor,

@@ -1,0 +1,176 @@
+.container {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  font-family: inherit;
+}
+
+.hero {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 100px 24px 48px;
+  text-align: center;
+}
+
+.effectiveDate {
+  font-size: 0.78rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fff 0%, #888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroTagline {
+  font-size: 1.2rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.commitmentBanner {
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+  background: #0a0a0a;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.commitmentBanner p {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: #888;
+  line-height: 1.8;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 24px 80px;
+}
+
+.section {
+  padding: 48px 0;
+  border-bottom: 1px solid #111;
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.section p {
+  color: #aaa;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  font-size: 0.97rem;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.sectionNumber {
+  font-size: 0.75rem;
+  color: #444;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  min-width: 24px;
+}
+
+.pillGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.pill {
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #222;
+  color: #888;
+  background: #0d0d0d;
+}
+
+.contactBox {
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 16px;
+}
+
+.contactBox p {
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.contactLink {
+  color: #888;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.contactLink:hover {
+  color: #fff;
+  border-color: #666;
+}
+
+.footerTagline {
+  text-align: center;
+  padding: 60px 24px 80px;
+  border-top: 1px solid #111;
+}
+
+.footerTagline p {
+  color: #444;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.taglineBrand {
+  color: #666 !important;
+  font-size: 0.85rem !important;
+  margin-top: 16px !important;
+  letter-spacing: 0.05em !important;
+}
+
+.taglineSub {
+  color: #333 !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.08em !important;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 72px 20px 40px;
+  }
+  .content {
+    padding: 16px 20px 60px;
+  }
+  .sectionTitle {
+    font-size: 1.1rem;
+  }
+}

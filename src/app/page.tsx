@@ -297,21 +297,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer>
-        <a href="#" className="footer-logo" onClick={(e) => { e.preventDefault(); scrollToSection("hero"); }}>
-          <svg width="24" height="16" viewBox="0 0 32 22" fill="none">
-            <ellipse cx="16" cy="11" rx="14" ry="9" stroke="#555" strokeWidth="1.2" />
-            <ellipse cx="16" cy="11" rx="4" ry="4" fill="#555" />
-          </svg>
-          GHOST PROJECTS
-        </a>
-        <div className="footer-links">
-          <Link href="/about">ABOUT</Link>
-          <a href="#">PRIVACY POLICY</a>
-          <a href="#">TERMS OF SERVICE</a>
-        </div>
-      </footer>
+      
     </>
   );
 }
