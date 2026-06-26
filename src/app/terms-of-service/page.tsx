@@ -1,8 +1,41 @@
 import styles from './terms.module.css'
+import type { Metadata } from 'next'
+import { JsonLd, webPageSchema, breadcrumbSchema } from '../lib/structured-data'
 
-export const metadata = {
-  title: 'Terms of Service — Ghost Browser',
-  description: 'Terms governing your access to and use of Ghost Browser by Ghost Projects.',
+export const metadata: Metadata = {
+  title: 'Terms of Service',
+  description: 'Terms and conditions governing your access to and use of Ghost Browser and services by Ghost Projects.',
+  keywords: [
+    "Ghost Browser terms",
+    "terms of service",
+    "use conditions",
+    "user agreement"
+  ],
+  alternates: {
+    canonical: '/terms-of-service',
+  },
+  openGraph: {
+    title: 'Terms of Service | Ghost Projects',
+    description: 'Terms and conditions governing your access to and use of Ghost Browser and services by Ghost Projects.',
+    url: 'https://ghostprojects.in/terms-of-service',
+    siteName: 'Ghost Projects',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: '/spider.png',
+        width: 800,
+        height: 600,
+        alt: 'Terms of Service',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service | Ghost Projects',
+    description: 'Terms and conditions governing your access to and use of Ghost Browser and services by Ghost Projects.',
+    images: ['/spider.png'],
+  },
 }
 
 const sections = [
@@ -105,6 +138,13 @@ const sections = [
 export default function TermsOfServicePage() {
   return (
     <main className={styles.container}>
+      {/* Terms of Service page structured data: WebPage identity + breadcrumb navigation */}
+      <JsonLd data={webPageSchema({
+        title: "Terms of Service | Ghost Projects",
+        description: "Terms and conditions governing your access to and use of Ghost Browser and services by Ghost Projects.",
+        path: "/terms-of-service",
+      })} />
+      <JsonLd data={breadcrumbSchema([{ name: "Terms of Service", path: "/terms-of-service" }])} />
 
       {/* Hero */}
       <section className={styles.hero}>

@@ -1,24 +1,63 @@
 import type { MetadataRoute } from "next";
+import { getAllPosts } from "./lib/queries";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = "https://ghostprojects.in";
+
+  // Core static pages with defined crawl strategies
+  const staticPages: MetadataRoute.Sitemap = [
     {
-      url: "https://ghostprojects.in",
+      url: baseUrl,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
-      url: "https://ghostprojects.in/about",
+      url: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://ghostprojects.in/ghost-browser",
+      url: `${baseUrl}/ghost-browser`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/privacy-policy`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/terms-of-service`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
   ];
+
+  // Dynamically include Sanity blog posts to support future pages automatically
+  try {
+    const posts = await getAllPosts();
+    const blogPostsSitemap = posts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: post.publishedDate ? new Date(post.publishedDate) : new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }));
+
+    return [...staticPages, ...blogPostsSitemap];
+  } catch (error) {
+    console.error("Failed to fetch posts for dynamic sitemap generation:", error);
+    return staticPages;
+  }
 }
+

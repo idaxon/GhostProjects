@@ -1,13 +1,55 @@
 import styles from './privacy.module.css'
+import type { Metadata } from 'next'
+import { JsonLd, webPageSchema, breadcrumbSchema } from '../lib/structured-data'
 
-export const metadata = {
-  title: 'Privacy Policy — Ghost Browser',
-  description: 'Ghost Browser is built on a simple principle: Your internet activity belongs to you.',
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description: 'Ghost Browser is built on a simple principle: Your internet activity belongs to you. Read our commitment to absolute zero-logs privacy.',
+  keywords: [
+    "Ghost Browser privacy",
+    "privacy policy",
+    "zero logs browser",
+    "no tracking policy",
+    "data protection"
+  ],
+  alternates: {
+    canonical: '/privacy-policy',
+  },
+  openGraph: {
+    title: 'Privacy Policy | Ghost Projects',
+    description: 'Ghost Browser is built on a simple principle: Your internet activity belongs to you. Read our commitment to absolute zero-logs privacy.',
+    url: 'https://ghostprojects.in/privacy-policy',
+    siteName: 'Ghost Projects',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: '/spider.png',
+        width: 800,
+        height: 600,
+        alt: 'Privacy Policy',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy | Ghost Projects',
+    description: 'Ghost Browser is built on a simple principle: Your internet activity belongs to you. Read our commitment to absolute zero-logs privacy.',
+    images: ['/spider.png'],
+  },
 }
 
 export default function PrivacyPolicyPage() {
   return (
     <main className={styles.container}>
+      {/* Privacy Policy page structured data: WebPage identity + breadcrumb navigation */}
+      <JsonLd data={webPageSchema({
+        title: "Privacy Policy | Ghost Projects",
+        description: "Ghost Browser is built on a simple principle: Your internet activity belongs to you. Read our commitment to absolute zero-logs privacy.",
+        path: "/privacy-policy",
+      })} />
+      <JsonLd data={breadcrumbSchema([{ name: "Privacy Policy", path: "/privacy-policy" }])} />
+
 
       {/* Hero */}
       <section className={styles.hero}>

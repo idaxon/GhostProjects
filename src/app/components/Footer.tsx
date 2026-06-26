@@ -23,7 +23,7 @@ export default function Footer() {
       <div className="footer-links">
         <Link href="/about">ABOUT</Link>
         <Link href="/privacy-policy">PRIVACY POLICY</Link>
-         <Link href="/terms-of-service">TERMS OF SERVICE</Link>
+        <Link href="/terms-of-service">TERMS OF SERVICE</Link>
       </div>
     </footer>
   );

@@ -5,7 +5,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/blogstudio", "/blogstudio/"],
     },
     sitemap: "https://ghostprojects.in/sitemap.xml",
   };
 }
+

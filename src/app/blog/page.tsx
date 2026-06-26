@@ -1,15 +1,61 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { getAllPosts } from '../lib/queries'
 import { urlFor } from '../lib/sanity'
+import { JsonLd, webPageSchema, breadcrumbSchema } from '../lib/structured-data'
 import styles from './blog.module.css'
 
 export const revalidate = 60
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description: 'Articles and developer logs from Ghost Projects. Thoughts on privacy, network censorship, and independent technology.',
+  keywords: [
+    "Ghost Projects blog",
+    "privacy technology blog",
+    "censorship bypass articles",
+    "anti-censorship technology",
+    "Ghost Browser logs"
+  ],
+  alternates: {
+    canonical: '/blog',
+  },
+  openGraph: {
+    title: 'Ghost Projects Blog',
+    description: 'Articles and developer logs from Ghost Projects. Thoughts on privacy, network censorship, and independent technology.',
+    url: 'https://ghostprojects.in/blog',
+    siteName: 'Ghost Projects',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: '/spider.png',
+        width: 800,
+        height: 600,
+        alt: 'Ghost Projects Blog',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ghost Projects Blog',
+    description: 'Articles and developer logs from Ghost Projects. Thoughts on privacy, network censorship, and independent technology.',
+    images: ['/spider.png'],
+  },
+}
 
 export default async function BlogPage() {
   const posts = await getAllPosts()
 
   return (
     <main className={styles.container}>
+      {/* Blog page structured data: WebPage identity + breadcrumb navigation */}
+      <JsonLd data={webPageSchema({
+        title: "Blog | Ghost Projects",
+        description: "Articles and developer logs from Ghost Projects. Thoughts on privacy, network censorship, and independent technology.",
+        path: "/blog",
+      })} />
+      <JsonLd data={breadcrumbSchema([{ name: "Blog", path: "/blog" }])} />
       <h1 className={styles.heading}>Blog</h1>
       {posts.length === 0 && (
         <div className={styles.emptyContainer}>
@@ -32,9 +78,11 @@ export default async function BlogPage() {
           <Link href={`/blog/${post.slug}`} key={post.slug} className={styles.card}>
             {post.coverImage && (
               <img
-                src={urlFor(post.coverImage).width(600).height(340).url()}
+                src={urlFor(post.coverImage).width(600).height(340).auto('format').url()}
                 alt={post.title}
                 className={styles.cardImage}
+                loading="lazy"
+                decoding="async"
               />
             )}
             <div className={styles.cardBody}>
