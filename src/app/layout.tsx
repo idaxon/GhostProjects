@@ -83,7 +83,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${instrumentSans.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
-      <body>
+      <body suppressHydrationWarning>
         {/* Global structured data: Organization + WebSite (invisible to users, consumed by crawlers) */}
         <JsonLd data={organizationSchema()} />
         <JsonLd data={webSiteSchema()} />

@@ -261,9 +261,7 @@ export default function Home() {
     );
   };
 
-  // Refs for custom cursor
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
+
 
   // Refs for scroll-synced spider thread
   const threadContainerRef = useRef<HTMLDivElement>(null);
@@ -278,41 +276,6 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // ── CURSOR FOLLOW ANIMATION ──
-    const isMobile = window.innerWidth <= 768;
-    let mx = 0;
-    let my = 0;
-    let rx = 0;
-    let ry = 0;
-
-    const onMouseMove = (e: MouseEvent) => {
-      mx = e.clientX;
-      my = e.clientY;
-    };
-
-    if (!isMobile) {
-      window.addEventListener("mousemove", onMouseMove);
-    }
-
-    let cursorAnimId: number;
-    const animCursor = () => {
-      if (cursorRef.current) {
-        cursorRef.current.style.left = `${mx}px`;
-        cursorRef.current.style.top = `${my}px`;
-      }
-      if (ringRef.current) {
-        rx += (mx - rx) * 0.12;
-        ry += (my - ry) * 0.12;
-        ringRef.current.style.left = `${rx}px`;
-        ringRef.current.style.top = `${ry}px`;
-      }
-      cursorAnimId = requestAnimationFrame(animCursor);
-    };
-
-    if (!isMobile) {
-      animCursor();
-    }
-
     // ── SPIDER IDLE HANGING ANIMATION ──
     let simulationId: number;
 
@@ -385,10 +348,6 @@ export default function Home() {
 
     // Clean up
     return () => {
-      if (!isMobile) {
-        window.removeEventListener("mousemove", onMouseMove);
-        cancelAnimationFrame(cursorAnimId);
-      }
       cancelAnimationFrame(simulationId);
       revealObserver.disconnect();
       dotObserver.disconnect();
@@ -409,9 +368,7 @@ export default function Home() {
       })} />
       {/* Testimonials Review structured data (crawlers index reviews for rich snippets) */}
       <JsonLd data={testimonialsReviewSchema()} />
-      {/* Custom Cursor elements (hidden on mobile via CSS) */}
-      <div id="cursor" ref={cursorRef}></div>
-      <div id="cursor-ring" ref={ringRef}></div>
+
 
 
 

@@ -1,42 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 
 export default function AboutPage() {
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const isMobile = window.innerWidth <= 768;
-    let mx = 0, my = 0, rx = 0, ry = 0;
-
-    const onMouseMove = (e: MouseEvent) => {
-      mx = e.clientX;
-      my = e.clientY;
-    };
-
-    if (!isMobile) {
-      window.addEventListener("mousemove", onMouseMove);
-    }
-
-    let cursorAnimId: number;
-    const animCursor = () => {
-      if (cursorRef.current) {
-        cursorRef.current.style.left = `${mx}px`;
-        cursorRef.current.style.top = `${my}px`;
-      }
-      if (ringRef.current) {
-        rx += (mx - rx) * 0.12;
-        ry += (my - ry) * 0.12;
-        ringRef.current.style.left = `${rx}px`;
-        ringRef.current.style.top = `${ry}px`;
-      }
-      cursorAnimId = requestAnimationFrame(animCursor);
-    };
-
-    if (!isMobile) animCursor();
-
     // Scroll reveal observer
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -53,18 +22,12 @@ export default function AboutPage() {
     revealElements.forEach((el) => revealObserver.observe(el));
 
     return () => {
-      if (!isMobile) {
-        window.removeEventListener("mousemove", onMouseMove);
-        cancelAnimationFrame(cursorAnimId);
-      }
       revealObserver.disconnect();
     };
   }, []);
 
   return (
     <div className="about-page">
-      <div id="cursor" ref={cursorRef}></div>
-      <div id="cursor-ring" ref={ringRef}></div>
 
 
 
