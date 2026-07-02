@@ -6,8 +6,9 @@
 
 .meta {
   font-size: 0.85rem;
-  color: #888;
+  color: var(--color-text-secondary);
   margin-bottom: 12px;
+  font-family: var(--font-mono);
 }
 
 .title {
@@ -15,6 +16,7 @@
   font-weight: 700;
   margin-bottom: 28px;
   line-height: 1.3;
+  color: #ffffff;
 }
 
 .cover {
@@ -23,6 +25,7 @@
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .tags {
@@ -34,21 +37,57 @@
 
 .tag {
   font-size: 0.75rem;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 999px;
-  background: #f0f0f0;
-  color: #444;
+  background: rgba(192, 57, 43, 0.08);
+  color: var(--color-accent);
+  border: 1px solid rgba(192, 57, 43, 0.2);
+  font-family: var(--font-mono);
+  transition: all 0.2s ease;
+}
+
+.tag:hover {
+  background: rgba(192, 57, 43, 0.15);
+  border-color: rgba(192, 57, 43, 0.35);
 }
 
 .body {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: #333;
+  color: rgba(255, 255, 255, 0.85); /* Highly readable, soft white text */
 }
 
-.body h2 { font-size: 1.5rem; font-weight: 600; margin: 32px 0 12px; }
-.body h3 { font-size: 1.2rem; font-weight: 600; margin: 24px 0 10px; }
-.body p  { margin-bottom: 20px; }
-.body ul, .body ol { padding-left: 24px; margin-bottom: 20px; }
-.body li { margin-bottom: 8px; }
-.body img { width: 100%; border-radius: 8px; margin: 24px 0; }
+.body h2 { 
+  font-size: 1.6rem; 
+  font-weight: 600; 
+  margin: 40px 0 16px; 
+  color: #ffffff;
+}
+
+.body h3 { 
+  font-size: 1.3rem; 
+  font-weight: 600; 
+  margin: 32px 0 12px; 
+  color: #ffffff;
+}
+
+.body p  { 
+  margin-bottom: 20px; 
+}
+
+.body ul, .body ol { 
+  padding-left: 24px; 
+  margin-bottom: 20px; 
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.body li { 
+  margin-bottom: 8px; 
+}
+
+.body img { 
+  width: 100%; 
+  border-radius: 8px; 
+  margin: 24px 0; 
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}

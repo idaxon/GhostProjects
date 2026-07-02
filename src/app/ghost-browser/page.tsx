@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import TrustTerminal from "../components/TrustTerminal";
 
 
 export default function GhostBrowserPage() {
@@ -102,6 +103,9 @@ export default function GhostBrowserPage() {
             </p>
           </div>
         </section>
+
+        {/* TRUST TERMINAL SECTION */}
+        <TrustTerminal />
 
         {/* BOTTOM CALL TO ACTION */}
         <section className="bottom-cta">
